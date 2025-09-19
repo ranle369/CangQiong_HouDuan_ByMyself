@@ -48,6 +48,8 @@
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${springboot_starter_version}</version>
             </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
