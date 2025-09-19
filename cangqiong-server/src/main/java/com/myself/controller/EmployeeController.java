@@ -1,11 +1,19 @@
 package com.myself.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import result.Result;
 
-
+@Slf4j
 @RestController
 public class EmployeeController {
 
-    public
+    @RequestMapping(path="/get", method= RequestMethod.GET)
+    public Result<String> test(){
+        log.info("test");
+        return null;
+    }
 
 }
