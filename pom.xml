@@ -29,27 +29,38 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <lombok_version>1.18.20</lombok_version>
-        <springboot_starter_version>2.7.3</springboot_starter_version>
+        <mybatis.spring>2.2.0</mybatis.spring>
+        <lombok>1.18.20</lombok>
+        <fastjson>1.2.76</fastjson>
+        <commons.lang>2.6</commons.lang>
         <druid>1.2.1</druid>
+        <pagehelper>1.3.0</pagehelper>
+        <aliyun.sdk.oss>3.10.2</aliyun.sdk.oss>
+        <knife4j>3.0.2</knife4j>
+        <aspectj>1.9.4</aspectj>
+        <jjwt>0.9.1</jjwt>
+        <jaxb-api>2.3.1</jaxb-api>
+        <poi>3.16</poi>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok_version}</version>
+            <version>${lombok}</version>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+<!--            优化jdbc，配置问题，增加数据库连接池-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot_starter_version}</version>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring}</version>
             </dependency>
 
+<!--            连接数据库，优化数据库连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
@@ -57,15 +68,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>
