@@ -5,22 +5,26 @@ import dto.EmployeeLoginDTO;
 import entity.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import result.Result;
 
-@RestController("/admin/employee")
+@RestController
+@RequestMapping("/admin/employee")
 @Slf4j
-public class admin {
+public class AdminLoginController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Result loginAndCheck(@RequestBody EmployeeLoginDTO employeeLoginDTO){
+        log.info("登录信息：{}",employeeLoginDTO);
 
-        Employee employee =  employeeService.getByName(employeeLoginDTO.getName());
+        Employee employee =  employeeService.getByName(employeeLoginDTO);
+
+        if(employee == null){
+            return Result.error("用户不存在");
+        }
         return null;
     }
 }

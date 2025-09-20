@@ -14,8 +14,8 @@ spring:
     allow-circular-references: true
   datasource:
     druid:
-      password:
       username: ${cangqiong.datasource.username}
+      password: ${cangqiong.datasource.password}
       url: jdbc:mysql://${cangqiong.datasource.host}:${cangqiong.datasource.port}/${cangqiong.datasource.database}?${cangqiong.datasource.other}
       driver-class-name: ${cangqiong.datasource.driver-class-name}
 
