@@ -9,3 +9,12 @@ logging:
 spring:
   profiles:
     active: dev
+#  结局循环依赖，ioc容器中的
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      password:
+      username: ${cangqiong.datasource.username}
+      url: jdbc:mysql://${cangqiong.datasource.host}:${cangqiong.datasource.port}/${cangqiong.datasource.database}?${cangqiong.datasource.other}
+      driver-class-name: ${cangqiong.datasource.driver-class-name}

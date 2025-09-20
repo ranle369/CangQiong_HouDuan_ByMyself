@@ -31,6 +31,7 @@
 
         <lombok_version>1.18.20</lombok_version>
         <springboot_starter_version>2.7.3</springboot_starter_version>
+        <druid>1.2.1</druid>
     </properties>
 
     <dependencies>
@@ -49,7 +50,11 @@
                 <version>${springboot_starter_version}</version>
             </dependency>
 
-
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
