@@ -18,3 +18,9 @@ spring:
       username: ${cangqiong.datasource.username}
       url: jdbc:mysql://${cangqiong.datasource.host}:${cangqiong.datasource.port}/${cangqiong.datasource.database}?${cangqiong.datasource.other}
       driver-class-name: ${cangqiong.datasource.driver-class-name}
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: entity
