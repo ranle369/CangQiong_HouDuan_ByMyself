@@ -1,4 +1,4 @@
-package exception;
+package com.myself.exception;
 
 public class AccountNotFoundException extends BaseException {
     public AccountNotFoundException() {}

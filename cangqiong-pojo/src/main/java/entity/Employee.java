@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Employee {
-    private  Integer id;
+    private Long id;
 
 //    用于登录的姓名
     private String username;

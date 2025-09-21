@@ -29,4 +29,13 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 #  type-aliases-package: entity
 
+cangqiong:
+  jwt:
+#    jwt过期时间
+    admin-expire-time: 7200000
+#    jwt的token名字
+    admin-token-name: token
+#    jw密钥
+    admin-secret-key: ranle
+
 

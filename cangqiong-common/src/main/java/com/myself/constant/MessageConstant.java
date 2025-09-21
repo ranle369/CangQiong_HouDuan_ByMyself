@@ -1,4 +1,4 @@
-package constant;
+package com.myself.constant;
 
 public class MessageConstant {
 
