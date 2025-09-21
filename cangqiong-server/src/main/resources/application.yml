@@ -1,15 +1,19 @@
 server:
   port: 8080
 
-
+#包中文件日志等级
 logging:
   level:
-    root: info
+    com:
+      myself:
+        mapper: debug
+        service: info
+        controller: info
 
 spring:
   profiles:
     active: dev
-#  结局循环依赖，ioc容器中的
+#  解决循环依赖，ioc容器中的
   main:
     allow-circular-references: true
   datasource:
@@ -24,3 +28,5 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
 #  type-aliases-package: entity
+
+

@@ -41,6 +41,7 @@
         <jjwt>0.9.1</jjwt>
         <jaxb-api>2.3.1</jaxb-api>
         <poi>3.16</poi>
+        <log4j>1.2.12</log4j>
     </properties>
 
     <dependencies>
@@ -66,6 +67,13 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid}</version>
             </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
