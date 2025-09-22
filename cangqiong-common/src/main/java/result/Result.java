@@ -1,4 +1,4 @@
-package com.myself.result;
+package result;
 
 import lombok.Data;
 

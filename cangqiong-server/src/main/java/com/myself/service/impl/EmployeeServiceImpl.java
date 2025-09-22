@@ -2,18 +2,18 @@ package com.myself.service.impl;
 
 import com.myself.mapper.EmployeeMapper;
 import com.myself.service.EmployeeService;
-import com.myself.constant.JwtConstant;
-import com.myself.constant.MessageConstant;
+import constant.JwtConstant;
+import constant.MessageConstant;
 import dto.EmployeeLoginDTO;
 import entity.Employee;
-import com.myself.exception.AccountNotFoundException;
-import com.myself.exception.PasswordErrorException;
+import exception.AccountNotFoundException;
+import exception.PasswordErrorException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-import com.myself.proprety.JwtProperty;
-import com.myself.util.JwtUtil;
+import property.JwtProperty;
+import util.JwtUtil;
 import vo.EmployeeLoginVO;
 
 import java.util.HashMap;

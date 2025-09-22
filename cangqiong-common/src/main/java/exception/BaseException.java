@@ -1,4 +1,4 @@
-package com.myself.exception;
+package exception;
 
 public class BaseException extends RuntimeException{
 
