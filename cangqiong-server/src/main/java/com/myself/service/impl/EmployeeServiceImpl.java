@@ -53,17 +53,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 //        生成jwt令牌
         Map<String ,Object> map = new HashMap<>();
-        map.put(JwtConstant.EMP_ID,employee.getId());
-//        String jwt = JwtUtil.createJWT(jwtProperty.getAdminSecretKey(), jwtProperty.getAdminExpireTime(), map);
-        String jwt = JwtUtil.createJWT(employee.getUsername(), jwtProperty.getAdminExpireTime(), map);
 
-        EmployeeLoginVO employeeLoginVO = new EmployeeLoginVO();
-        employeeLoginVO.builder()
+        //载荷里面放的员工ID
+        map.put(JwtConstant.EMP_ID,employee.getId());
+
+//        生成的jwt令牌就需要，密钥以及过期时间时间
+        String jwt = JwtUtil.createJWT(jwtProperty.getAdminSecretKey(), jwtProperty.getAdminExpireTime(), map);
+//        String jwt = JwtUtil.createJWT(employee.getUsername(), jwtProperty.getAdminExpireTime(), map);
+
+        EmployeeLoginVO employeeLoginVO = EmployeeLoginVO.builder()
                 .id(employee.getId())
                 .username(employee.getUsername())
                 .name(employee.getName())
                 .token(jwt)
                 .build();
+
+
 
         return employeeLoginVO;
     }
