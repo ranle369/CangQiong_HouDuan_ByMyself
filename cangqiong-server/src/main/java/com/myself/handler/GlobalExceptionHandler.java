@@ -1,8 +1,9 @@
 package com.myself.handler;
 
+import result.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import result.Result;
+
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

@@ -1,13 +1,15 @@
 package com.myself.interceptor;
 
 import constant.JwtConstant;
+import property.JwtProperty;
+import util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import property.JwtProperty;
-import util.JwtUtil;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class JwtInterceptor implements HandlerInterceptor {
 
+    @Autowired
     private JwtProperty jwtProperty;
 
     /**
@@ -35,10 +38,14 @@ public class JwtInterceptor implements HandlerInterceptor {
 
         String token = request.getHeader(jwtProperty.getAdminTokenName());
 
-        if(token == null){
+        try {
             Claims jwt = JwtUtil.parseJWT(jwtProperty.getAdminSecretKey(), token);
             log.info("登录员工ID{}",jwt.get(JwtConstant.EMP_ID).toString());
             return true;
+        }catch (Exception e){
+            return false;
         }
+
+
     }
 }
