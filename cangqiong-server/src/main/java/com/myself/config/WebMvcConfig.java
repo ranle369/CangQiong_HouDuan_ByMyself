@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Slf4j
@@ -14,7 +15,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private JwtInterceptor jwtInterceptor;
 
     public void addInterceptors(InterceptorRegistry registry) {
-        log.info("自定义");
+        log.info("注册拦截成功");
         registry.addInterceptor(jwtInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/employee/login");

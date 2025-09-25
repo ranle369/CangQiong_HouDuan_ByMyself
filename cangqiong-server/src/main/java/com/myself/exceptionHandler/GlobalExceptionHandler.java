@@ -1,4 +1,4 @@
-package com.myself.handler;
+package com.myself.exceptionHandler;
 
 import result.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;

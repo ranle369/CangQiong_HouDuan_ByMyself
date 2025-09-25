@@ -1,5 +1,6 @@
 package com.myself.controller.loginAdmin;
 
+import dto.EmployeeInsertDTO;
 import result.Result;
 import com.myself.service.EmployeeService;
 import dto.EmployeeLoginDTO;
@@ -23,5 +24,17 @@ public class AdminLoginController {
         EmployeeLoginVO employeeLoginVO =  employeeService.getByName(employeeLoginDTO);
 
         return Result.success(employeeLoginVO);
+    }
+
+    @PostMapping("/logout")
+    public Result logoutEmployee(){
+        return Result.success();
+    }
+
+    @PostMapping()
+    public Result insertEmployee(@RequestBody EmployeeInsertDTO employeeInsertDTO){
+        log.info("新增员工{}",employeeInsertDTO);
+        employeeService.insertEmployee(employeeInsertDTO);
+        return null;
     }
 }

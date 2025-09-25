@@ -3,6 +3,34 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myself.mapper.EmployeeMapper">
+    <insert id="insertEmployee" parameterType="entity.Employee">
+        INSERT INTO user (
+            username,
+            name,
+            password,
+            sex,
+            phone,
+            idNumber,
+            status,
+            create_time,
+            update_time,
+            createUser,
+            updateUser
+        ) VALUES (
+                  #{username},
+                             #{name},
+                             #{password},
+                             #{sex},
+                             #{phone},
+                             #{idNumber},
+                             #{status},
+                             #{create_time},
+                             #{update_time},
+                             #{createUser},
+                             #{updateUser}
+                 )
+    </insert>
+
     <select id="getByName" resultType="entity.Employee">
         select * from employee where username = #{username}
     </select>

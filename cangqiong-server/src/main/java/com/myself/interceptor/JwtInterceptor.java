@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import util.ThreadLocalUtil;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ public class JwtInterceptor implements HandlerInterceptor {
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        log.info("开始执行拦截处理方案");
 //      不是动态方法就放行
         if(!(handler instanceof HandlerMethod)){
             return true;
@@ -40,9 +42,11 @@ public class JwtInterceptor implements HandlerInterceptor {
 
         try {
             Claims jwt = JwtUtil.parseJWT(jwtProperty.getAdminSecretKey(), token);
-            log.info("登录员工ID{}",jwt.get(JwtConstant.EMP_ID).toString());
+            log.info("jwt解析成功");
+            ThreadLocalUtil.setData(Long.parseLong(jwt.get(JwtConstant.EMP_ID).toString()));
             return true;
         }catch (Exception e){
+            log.info("jwt解析失败");
             return false;
         }
 

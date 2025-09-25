@@ -2,6 +2,9 @@ package com.myself.service.impl;
 
 import constant.JwtConstant;
 import constant.MessageConstant;
+import constant.PasswordConstant;
+import constant.StatusConstant;
+import dto.EmployeeInsertDTO;
 import exception.AccountNotFoundException;
 import exception.PasswordErrorException;
 import com.myself.mapper.EmployeeMapper;
@@ -14,8 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import util.ThreadLocalUtil;
 import vo.EmployeeLoginVO;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,5 +76,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
         return employeeLoginVO;
+    }
+
+    @Override
+    public void insertEmployee(EmployeeInsertDTO employeeInsertDTO) {
+        /**
+         *     private Long id;
+         *     private String idNumber;
+         *     private String name;
+         *     private String phone;
+         *     private String sex;
+         *     private String username;
+         */
+        Employee employee = Employee.builder()
+                .name(employeeInsertDTO.getName())
+                .phone(employeeInsertDTO.getPhone())
+                .sex(employeeInsertDTO.getSex())
+                .username(employeeInsertDTO.getUsername())
+                .createTime(LocalDateTime.now())
+                .updateTime(LocalDateTime.now())
+                .password(PasswordConstant.DEFAULT_PASSWORD)
+                .status(StatusConstant.ENABLE)
+                .idNumber(employeeInsertDTO.getIdNumber())
+                .createUser(Long.parseLong(ThreadLocalUtil.getData()))
+                .updateUser(Long.parseLong(ThreadLocalUtil.getData()))
+                .build();
+        employeeMapper.insertEmployee(employee);
     }
 }
