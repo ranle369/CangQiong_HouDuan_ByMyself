@@ -43,7 +43,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         try {
             Claims jwt = JwtUtil.parseJWT(jwtProperty.getAdminSecretKey(), token);
             log.info("jwt解析成功");
-            ThreadLocalUtil.setData(Long.parseLong(jwt.get(JwtConstant.EMP_ID).toString()));
+            ThreadLocalUtil.setData(jwt.get(JwtConstant.EMP_ID).toString());
             return true;
         }catch (Exception e){
             log.info("jwt解析失败");
