@@ -32,9 +32,9 @@ public class AdminLoginController {
     }
 
     @PostMapping()
-    public Result insertEmployee(@RequestBody EmployeeInsertDTO employeeInsertDTO){
+    public Result<String> insertEmployee(@RequestBody EmployeeInsertDTO employeeInsertDTO){
         log.info("新增员工{}",employeeInsertDTO);
         employeeService.insertEmployee(employeeInsertDTO);
-        return null;
+        return Result.success("success");
     }
 }

@@ -101,6 +101,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .createUser(Long.parseLong(ThreadLocalUtil.getData()))
                 .updateUser(Long.parseLong(ThreadLocalUtil.getData()))
                 .build();
+        log.info(employee.toString());
         employeeMapper.insertEmployee(employee);
     }
 }
