@@ -6,6 +6,7 @@ import constant.PasswordConstant;
 import constant.StatusConstant;
 import dto.EmployeeInsertDTO;
 import exception.AccountNotFoundException;
+import exception.DuplicateUsernameException;
 import exception.PasswordErrorException;
 import com.myself.mapper.EmployeeMapper;
 import property.JwtProperty;
@@ -95,13 +96,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .username(employeeInsertDTO.getUsername())
                 .createTime(LocalDateTime.now())
                 .updateTime(LocalDateTime.now())
-                .password(PasswordConstant.DEFAULT_PASSWORD)
+                .password((DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes())))
                 .status(StatusConstant.ENABLE)
                 .idNumber(employeeInsertDTO.getIdNumber())
                 .createUser(Long.parseLong(ThreadLocalUtil.getData()))
                 .updateUser(Long.parseLong(ThreadLocalUtil.getData()))
                 .build();
         log.info(employee.toString());
-        employeeMapper.insertEmployee(employee);
+        try {
+            employeeMapper.insertEmployee(employee);
+        } catch (Exception e) {
+            throw new DuplicateUsernameException("Duplicate " + employee.getUsername());
+        }
     }
 }

@@ -7,6 +7,7 @@ import dto.EmployeeLoginDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import util.ThreadLocalUtil;
 import vo.EmployeeLoginVO;
 
 @RestController
@@ -35,6 +36,7 @@ public class AdminLoginController {
     public Result<String> insertEmployee(@RequestBody EmployeeInsertDTO employeeInsertDTO){
         log.info("新增员工{}",employeeInsertDTO);
         employeeService.insertEmployee(employeeInsertDTO);
+        ThreadLocalUtil.clear();
         return Result.success("success");
     }
 }
