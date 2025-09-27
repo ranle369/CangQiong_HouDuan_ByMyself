@@ -38,4 +38,8 @@ cangqiong:
 #    jw密钥
     admin-secret-key: ranle
 
+pagehelper:
+#  dialect: mysql
+  reasonable: true
+
 

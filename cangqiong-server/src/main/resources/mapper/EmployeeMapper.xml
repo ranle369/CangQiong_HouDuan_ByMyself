@@ -35,4 +35,12 @@
     <select id="getByName" resultType="entity.Employee">
         select * from employee where username = #{username}
     </select>
+    <select id="getPageHelperPara" resultType="entity.Employee">
+        select * from employee
+        <where>
+            <if test="name != null and name !=''">
+                name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

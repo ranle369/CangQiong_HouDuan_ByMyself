@@ -1,10 +1,12 @@
 package com.myself.service.impl;
 
+import com.github.pagehelper.Page;
 import constant.JwtConstant;
 import constant.MessageConstant;
 import constant.PasswordConstant;
 import constant.StatusConstant;
 import dto.EmployeeInsertDTO;
+import dto.EmployeePageDTO;
 import exception.AccountNotFoundException;
 import exception.DuplicateUsernameException;
 import exception.PasswordErrorException;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 import util.ThreadLocalUtil;
 import vo.EmployeeLoginVO;
+import vo.EmployeePageVO;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -108,5 +111,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (Exception e) {
             throw new DuplicateUsernameException("Duplicate " + employee.getUsername());
         }
+    }
+
+    @Override
+    public EmployeePageVO showPage(EmployeePageDTO employeePageDTO) {
+        Page<Employee> page = employeeMapper.getPageHelperPara(employeePageDTO);
+        EmployeePageVO employeePageVO = EmployeePageVO.builder()
+                .total(page.getTotal())
+                .records(page.getResult())
+                .build();
+        return employeePageVO;
     }
 }
